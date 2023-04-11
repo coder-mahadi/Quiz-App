@@ -20,7 +20,7 @@ continue_quiz.onclick = () => {
 //Question dynamic script
 function getQuestion(index) {
     const question_selector = document.querySelector(".question")
-    question_selector.innerHTML = `<p> ${questions[index].num}. ${questions[index].question} </p>`
+    question_selector.innerHTML = `<p> ${questions[index].question} </p>`
     const options = document.querySelector(".options")
     options.innerHTML = `
     <p> ${questions[index].options[0]} </p>
@@ -44,6 +44,12 @@ next_quiz.onclick = () => {
 function ques_bottom_count(index) {
     const bottom_count = document.querySelector(".ques_count")
     bottom_count.innerHTML = `
-    <span>${questions[index].num} of ${questions.length} Questions</span>
+    <span>${index + 1} of ${questions.length} Questions</span>
     `
+}
+
+//Option answers check
+const options_content = document.querySelector(".options p")
+options_content.onclick = () => {
+
 }

@@ -1,4 +1,4 @@
-let questions = [
+let shuffle_Question = [
     {
         num: 1,
         question: "What is the correct syntax for declaring a variable in JavaScript?",
@@ -66,3 +66,16 @@ let questions = [
         ]
     }
 ];
+
+//Shuffle question
+let questions = []
+let shuffle_index = []
+let i = 0;
+while (i < shuffle_Question.length) {
+    let shuffleCount = Math.floor(Math.random() * shuffle_Question.length)
+    if (!shuffle_index.includes(shuffleCount)) {
+        questions.push(shuffle_Question[shuffleCount]);
+        shuffle_index.push(shuffleCount);
+        i++
+    }
+}
