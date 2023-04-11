@@ -49,7 +49,8 @@ function ques_bottom_count(index) {
 }
 
 //Option answers check
+/*
 const options_content = document.querySelector(".options p")
 options_content.onclick = () => {
 
-}
+}*/
