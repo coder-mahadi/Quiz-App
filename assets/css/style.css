@@ -258,3 +258,24 @@ p.option_content {
   left: 30px;
   bottom: 30px;
 }
+.result{
+  display: none;
+}
+.result.active{
+  display: block;
+}
+.result_img{
+  text-align: center;
+  margin-bottom: 30px;
+}
+.result_img img{
+  width: 80%;
+}
+.score h3{
+  font-size: 30px;
+  text-align: center;
+  color: #797979;
+}
+.score h3 span{
+  color: #fc0335;
+}

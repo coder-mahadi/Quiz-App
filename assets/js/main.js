@@ -3,7 +3,10 @@ const quiz_section = document.querySelector(".quiz_rules")
 const exit_quiz = document.querySelector(".exit_quiz")
 const continue_quiz = document.querySelector(".continue_quiz")
 const quiz_questions = document.querySelector(".quiz_questions")
+let result = document.querySelector(".result")
 const footer_btn_ques = document.querySelector(".footer_btn_ques button")
+const result_replay = document.querySelector(".result_replay")
+const quiz_app = document.querySelector(".quiz_app")
 
 //Page change script
 start_btn.onclick = () => {
@@ -14,6 +17,7 @@ exit_quiz.onclick = () => {
 }
 continue_quiz.onclick = () => {
     quiz_questions.classList.add("active")
+    quiz_section.classList.remove("active")
     getQuestion(0)
     ques_bottom_count(0)
     startTime(timeSeconds)
@@ -38,6 +42,7 @@ function getQuestion(index) {
 }
 
 const next_quiz = document.querySelector(".next_quiz")
+
 let ques_count = 0;
 next_quiz.onclick = () => {
     if (ques_count < questions.length - 1) {
@@ -46,10 +51,12 @@ next_quiz.onclick = () => {
         ques_bottom_count(ques_count)
         footer_btn_ques.style.display = "none"
     } else {
-        console.log("Quiz Complete")
+        result.style.display = "block"
     }
+
     startTime(timeSeconds)
     progressBar()
+
 
 }
 
@@ -59,8 +66,14 @@ function ques_bottom_count(index) {
     <span>${index + 1} of ${questions.length} Questions</span>
     `
 }
+
 let crossIcon = '<div class="cross"><i class="fa-solid fa-xmark"></i></div>'
 let rightIcon = '<div class="cheek"><i class="fa-solid fa-check"></i></div>'
+let userScore = 0;
+const resultScore = document.querySelector(".score span:nth-child(1)")
+const totalScore = document.querySelector(".score span:nth-child(2)")
+const message = document.querySelector(".score h3:nth-child(1)")
+
 function correctAnswer(answer) {
     clearInterval(timeCount)
     let userAnswer = answer.textContent;
@@ -68,6 +81,7 @@ function correctAnswer(answer) {
     const CorrectAnswer = questions[ques_count].answer
     const options_content = document.querySelectorAll(".options .option_content")
     if (trimUserAns == CorrectAnswer) {
+        userScore += 1;
         answer.classList.add("active")
         answer.insertAdjacentHTML("beforeend", rightIcon)
     } else {
@@ -77,9 +91,6 @@ function correctAnswer(answer) {
             if (options_content[i].textContent == CorrectAnswer) {
                 options_content[i].classList.add("active")
                 options_content[i].insertAdjacentHTML("beforeend", rightIcon)
-            } else {
-
-
             }
         }
 
@@ -90,10 +101,21 @@ function correctAnswer(answer) {
     }
 
     footer_btn_ques.style.display = "block"
+    resultScore.textContent = userScore;
+    totalScore.textContent = questions.length;
+    if (userScore > (questions.length) / 2) {
+        message.textContent = "Congratulation!!"
+    } else if (userScore >= (questions.length) / 3) {
+        message.textContent = "Try to better!!"
+    } else if (userScore == 0) {
+        message.textContent = "Work hard and try more"
+    }
 }
+
 const time_counter_span = document.querySelector(".time_counter span:nth-child(2)")
 let timeCount;
-let timeSeconds = 5
+let timeSeconds = 15
+
 function zeroToAns() {
     clearInterval(timeCount)
     const options_content = document.querySelectorAll(".options .option_content")
@@ -107,8 +129,10 @@ function zeroToAns() {
         options_content[i].classList.add("disable")
     }
 }
+
 function startTime(time) {
     timeCount = setInterval(timer, 1000)
+
     function timer() {
         time_counter_span.textContent = time
         time--
@@ -125,8 +149,14 @@ function startTime(time) {
     }
 
 }
+
 function progressBar() {
     let progress = document.querySelector(".progress_bar")
     let progressResult = ((ques_count + 1) / questions.length) * 100
     progress.style.width = `${progressResult}%`
+}
+
+const result_exit = document.querySelector(".result_exit")
+result_exit.onclick = () => {
+    window.location.reload()
 }
