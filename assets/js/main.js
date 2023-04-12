@@ -23,10 +23,15 @@ function getQuestion(index) {
     question_selector.innerHTML = `<p> ${questions[index].question} </p>`
     const options = document.querySelector(".options")
     options.innerHTML = `
-    <p> ${questions[index].options[0]} </p>
-    <p> ${questions[index].options[1]} </p>
-    <p> ${questions[index].options[2]} </p>
-    <p> ${questions[index].options[3]} </p>`
+    <p class="option_content">${questions[index].options[0]}</p>
+    <p class="option_content">${questions[index].options[1]}</p>
+    <p class="option_content">${questions[index].options[2]}</p>
+    <p class="option_content">${questions[index].options[3]}</p>`
+    //Option answers check
+    const options_content = document.querySelectorAll(".options .option_content")
+    for (let i = 0; i < options_content.length; i++) {
+        options_content[i].setAttribute("onclick", "correctAnswer(this)")
+    }
 }
 
 const next_quiz = document.querySelector(".next_quiz")
@@ -47,10 +52,28 @@ function ques_bottom_count(index) {
     <span>${index + 1} of ${questions.length} Questions</span>
     `
 }
+function correctAnswer(answer) {
+    let userAnswer = answer.textContent;
+    let trimUserAns = userAnswer.trim()
+    const CorrectAnswer = questions[ques_count].answer
+    const options_content = document.querySelectorAll(".options .option_content")
+    if (trimUserAns == CorrectAnswer) {
+        answer.classList.add("active")
+    } else {
+        answer.classList.add("inactive")
+        for (let i = 0; i < options_content.length; i++) {
+            if (options_content[i].textContent == CorrectAnswer) {
+                options_content[i].classList.add("active")
+            } else {
 
-//Option answers check
-/*
-const options_content = document.querySelector(".options p")
-options_content.onclick = () => {
 
-}*/
+            }
+        }
+
+    }
+
+    for (let i = 0; i < options_content.length; i++) {
+        options_content[i].classList.add("disable")
+    }
+
+}

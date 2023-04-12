@@ -13,7 +13,7 @@ let shuffle_Question = [
     {
         num: 2,
         question: "What is the correct way to add comments in JavaScript?",
-        answer: " // This is a comment",
+        answer: "// This is a comment",
         options: [
             "< ! - This is a comment - >",
             "// This is a comment",
@@ -39,30 +39,30 @@ let shuffle_Question = [
         options: [
             "There is no difference",
             "== compares values and data types, === compares only values",
-            " == compares only values, === compares values and data types",
-            " === compares strings, == compares numbers"
+            "== compares only values, === compares values and data types",
+            "=== compares strings, == compares numbers"
         ]
     },
     {
         num: 5,
         question: "What is the correct way to declare a function in JavaScript?",
-        answer: " All of the above",
+        answer: "All of the above",
         options: [
             "function myFunction() {}",
             "let myFunction() {}",
-            " const myFunction() => {}",
-            " All of the above"
+            "const myFunction() => {}",
+            "All of the above"
         ]
     },
     {
         num: 6,
         question: "What is the purpose of the this keyword in JavaScript?",
-        answer: " All of the above",
+        answer: "It refers to the current JavaScript function",
         options: [
-            " It refers to the current HTML element",
+            "It refers to the current HTML element",
             "It refers to the parent HTML element",
             "It refers to the current JavaScript function",
-            " It refers to the current object"
+            "It refers to the current object"
         ]
     }
 ];
