@@ -67,6 +67,7 @@ body {
   right: 0px;
   bottom: 0px;
   transition: all 0.3s ease;
+  display: none;
 }
 
 .footer_btn_ques button:hover {
@@ -119,14 +120,11 @@ body {
 /*===============================*/
 /*Quiz Rules Section*/
 .quiz_rules {
-  opacity: 0;
-  pointer-events: none;
+  display: none;
 }
 
 .quiz_rules.active {
-  opacity: 1;
-  pointer-events: all;
-  z-index: 5;
+  display: block;
 }
 
 .quiz_rules_header {
@@ -157,14 +155,11 @@ body {
 
 /*Quiz Questions*/
 .quiz_questions {
-  opacity: 0;
-  pointer-events: none;
+  display: none;
 }
 
 .quiz_questions.active {
-  opacity: 1;
-  pointer-events: all;
-  z-index: 5;
+  display: block;
 }
 
 .ques_header {
@@ -196,10 +191,15 @@ body {
 }
 
 .progress_bar {
-  width: 100%;
+  width: 0%;
+  transition: all 0.5s ease-in;
   height: 3px;
   background-color: tomato;
   border-radius: 0px 50px 50px 0px;
+  -webkit-transition: all 0.5s ease-in;
+  -moz-transition: all 0.5s ease-in;
+  -ms-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
 }
 
 .question {
@@ -231,6 +231,10 @@ body {
   -webkit-user-select: none;
   -ms-user-select: none; */
 }
+p.option_content {
+  display: flex;
+  justify-content: space-between;
+}
 .options .option_content.active {
   background: #00fa2a69;
 }
@@ -240,6 +244,14 @@ body {
 
 .options .option_content.disable {
   pointer-events: none;
+}
+.options .option_content .cross i {
+  font-size: 18px;
+  color: #f80021;
+}
+.options .option_content .cheek i {
+  font-size: 18px;
+  color: #008a00;
 }
 .ques_count {
   position: absolute;
